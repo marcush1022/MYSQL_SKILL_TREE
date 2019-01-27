@@ -1,6 +1,7 @@
-### **explain显示了SQL语句的查询执行计划(QEP), 即Mysql的优化器如何执行**
+# **EXPLAIN**
 
----------------------
+> **explain显示了SQL语句的查询执行计划(QEP), 即Mysql的优化器如何执行**
+
 ## **extra**
 包含Mysql解决查询的详细信息;
 - using filesort: order by的结果，可能是一个CPU密集型的过程，可以通过选择合适的索引来改善性能, 通过索引对查询结果进行排序;
@@ -13,7 +14,7 @@
 - impossible where: 根据where没有符合条件的行;
 - using index condition: 使用了index condition pushdown优化;
 
----------------------
+
 ## **select_type**
 
 - SIMPLE: 简单SELECT;
@@ -22,7 +23,7 @@
 - SUBQUERY: 子查询的第一个SELECT;
 - DEPENDENT SUBQUERY: 子查询的第一个SELECT, 取决于外面的查询;
 
----------------------
+
 ## **type**
 
 type: join的类型 从好到差依次是: 
@@ -41,18 +42,18 @@ system > const > eq_req > ref > fulltext > ref_or_null > index_merge > unique_su
 8. index: 该链接类型与ALL相同，不同的是是在索引树中查询，通常比ALL快;
 9. ALL: 全表扫描, 最慢的连接类型;
 
----------------------
+
 ## **filtered**
 
 查询条件过滤了表中多少行的记录，是一个估算的百分比值，rows显示的是行数的估计值，rows*filtered/100表示与前面的表join的行数；
 
----------------------
+
 ## **possible_keys**
 
 possible_keys: 可能应用于这张表中的索引, 为空表示无可能的索引;
 若列出多个索引（例如大于3个）表示备选索引太多了，同时也可能存在无效的单列索引;
 
----------------------
+
 ## **其他字段**
 
 - key: 实际使用的索引，为空表示无可用索引, 可在select中使用USE INDEX(indexname)强制使用索引或IGNORE INDEX(indexname)强制忽略索引;

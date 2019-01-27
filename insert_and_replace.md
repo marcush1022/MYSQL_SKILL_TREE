@@ -1,4 +1,4 @@
-#REPLACE
+# **REPLACE**
 
 若表中有一个旧记录与一个有UNIQUE或PRIMARY KRY限制的新数据相同，新数据会替换旧数据，没有数据则insert数据;
 replace与insert类似，又一点除外：若表中的旧记录与有UNIQUE或PRIMARY KEY限制的新纪录重复时，replace会首先删除旧记录，然后insert新记录, 使用replace相当于现对记录执行delete再执行insert；
